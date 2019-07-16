@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
         Vector2 movement = new Vector2(moveHorizontal, 0);
 
         rb2d.AddForce(movement * speed);
-        float moveVertical = Input.GetAxis("Vertical");
+        
+        if (Input.GetKey("escape"))Application.Quit();
     }
 
     void OnCollisionStay2D(Collision2D collision)
