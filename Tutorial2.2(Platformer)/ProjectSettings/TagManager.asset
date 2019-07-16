@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -40,4 +41,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Sky
+    uniqueID: 3154847071
+    locked: 0
+  - name: Ground
+    uniqueID: 2121176237
+    locked: 0
+  - name: Player
+    uniqueID: 3908792229
     locked: 0
