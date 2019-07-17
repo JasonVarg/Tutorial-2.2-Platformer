@@ -43,6 +43,11 @@ public class PlayerController : MonoBehaviour
         rb2d.AddForce(movement * speed);
         
         if (Input.GetKey("escape"))Application.Quit();
+
+        if(lives == 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -56,6 +61,14 @@ public class PlayerController : MonoBehaviour
             
         }
 
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.SetActive(false);
+            lives -= 1;
+
+            SetAllText();
+
+        }
         
         if(count == 4)
         {
@@ -78,5 +91,7 @@ public class PlayerController : MonoBehaviour
     void SetAllText()
     {
         countText.text = "Count: " + count.ToString();
+
+        livesText.text = "Lives: " + lives.ToString();
     }
 }
