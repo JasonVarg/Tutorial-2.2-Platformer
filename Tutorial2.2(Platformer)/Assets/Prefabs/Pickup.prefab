@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6093203244457210879}
   - component: {fileID: 7393769139084310908}
-  - component: {fileID: 371139936844314347}
+  - component: {fileID: 1511929016473604504}
   m_Layer: 0
   m_Name: Pickup
   m_TagString: Untagged
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &371139936844314347
+--- !u!114 &1511929016473604504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,6 +89,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5710412759013767742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8949ce87312d00a48913c12219dd546d, type: 3}
+  m_Script: {fileID: 11500000, guid: d410028651500004bbd45787e9458ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
