@@ -46,8 +46,12 @@ public class PlayerController : MonoBehaviour
 
         if(lives == 0)
         {
+
+            winText.text = "You Lose";
             gameObject.SetActive(false);
+
         }
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -71,6 +75,14 @@ public class PlayerController : MonoBehaviour
         }
         
         if(count == 4)
+        {
+            lives = 3;
+            transform.position = new Vector2(32.5F, 0F);
+
+            SetAllText();
+        }
+
+        if(count == 8)
         {
             winText.text = "You Win!";
         }
