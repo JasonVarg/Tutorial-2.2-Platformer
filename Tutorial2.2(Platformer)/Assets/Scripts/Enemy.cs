@@ -4,19 +4,34 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    
-    private Vector2 enemyPos;
-    private float xPos, yPos;
-    private float increaseX;
 
-    void Awake()
+    public Transform startM;
+    public Transform endM;
+
+    /*
+    public float speed = 1.0f;
+
+    private float startTime;
+    private float journeyLength;
+    */
+
+    void Start()
     {
-        increaseX = (2.0f * Mathf.PI) / 3.0f;
+        /* 
+        startTime = Time.time;
+
+        journeyLength = Vector2.Distance(endM.position, startM.position);
+        */
     }
 
     void Update()
     {
-        enemyPos = new Vector2(2.0f * Mathf.Sin(xPos), transform.position.y);
-        transform.Rotate (new Vector3(0, 0, 45)* Time.deltaTime);
+        /*
+        float distCovered = (Time.time - startTime) * speed;
+
+        float fracJourney = distCovered / journeyLength;
+
+        transform.position = Vector2.Lerp(startM.position, endM.position, fracJourney);
+        */
     }
 }
