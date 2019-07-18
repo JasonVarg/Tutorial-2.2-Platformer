@@ -127,6 +127,8 @@ public class PlayerController : MonoBehaviour
             musicSource.Play();
 
             musicSource.loop = true;
+
+            transform.position = new Vector2(60F, 0F);
         }
         
         //================================================//
