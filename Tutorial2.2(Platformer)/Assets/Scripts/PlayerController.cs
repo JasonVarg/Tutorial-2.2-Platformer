@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip winMusic;
     public AudioSource musicSource;
 
+    Animator anim;
+
     //===============================//
 
     //====== Private Variables ======//
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
     private int count;
     private int lives;
+    private bool facingRight = true;
 
     //===============================//
     
@@ -39,6 +42,8 @@ public class PlayerController : MonoBehaviour
         musicSource.loop = true;
 
         rb2d = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+
         count = 0;
         lives = 3;
         winText.text = "";
@@ -50,16 +55,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    
     }
 
     void FixedUpdate()
     {
-
-        //================ Play Music ===================//
-        
-        
-
         //================================================//
 
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -67,6 +67,52 @@ public class PlayerController : MonoBehaviour
         Vector2 movement = new Vector2(moveHorizontal, 0);
 
         rb2d.AddForce(movement * speed);
+
+        //================ Facing Direction ===================//   
+        
+        if(facingRight == true && moveHorizontal > 0)
+        {
+            Flip();
+        }
+        else if(facingRight == false && moveHorizontal < 0)
+        {
+            Flip();
+        }
+
+        //====================================================//
+         
+         if(Input.GetKeyDown (KeyCode.UpArrow))
+        {
+            anim.SetInteger("State", 2);
+        }
+
+        if(Input.GetKeyUp (KeyCode.UpArrow))
+        {
+            anim.SetInteger("State", 1);
+        }
+
+        // Running to Idle
+        //Left
+        if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            anim.SetInteger("State", 0);
+        }
+
+        if(Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            anim.SetInteger("State", 1);
+        }
+
+        //Right
+        if(Input.GetKey(KeyCode.RightArrow))
+        {
+            anim.SetInteger("State", 0);
+        }
+
+        if(Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            anim.SetInteger("State", 1);
+        }
 
         //================================================//
         
@@ -138,8 +184,10 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.collider.tag == "Ground")
         {
+        
             if(Input.GetKey(KeyCode.UpArrow))
             {
+                
                 rb2d.AddForce(new Vector2 (0, jumpForce), ForceMode2D.Impulse);
             }
         }
@@ -150,5 +198,16 @@ public class PlayerController : MonoBehaviour
         countText.text = "Count: " + count.ToString();
 
         livesText.text = "Lives: " + lives.ToString();
+    }
+
+     //================ Facing Direction ===================//   
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+
+        Vector2 Scaler = transform.localScale;
+        Scaler.x = Scaler.x * -1;
+        transform.localScale = Scaler;
     }
 }
